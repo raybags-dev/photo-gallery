@@ -12,6 +12,10 @@
   --red: red;
   --white: white;
   --black: black;
+
+  /* scroll track and thumb colors */
+  --scrollbarBG: rgb(44, 13, 13);
+  --thumb-bg: rgb(128, 80, 80);
 }
 
 /* base styles & title */
@@ -22,10 +26,27 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  scroll-behavior: smooth;
   background: linear-gradient(rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 50%),
     url("https://github.com/raybags-web-dev/image_base/blob/master/images/faniture4.jpeg?raw=true")
       center/cover no-repeat fixed;
 }
+
+/* scroll track and bar styles */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+  -webkit-transition: var(--standard-transition);
+  transition: var(--standard-transition);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--thumb-bg);
+  -webkit-transition: var(--standard-transition);
+  transition: var(--standard-transition);
+}
+
 .App {
   max-width: 960px;
   margin: 0 auto;
@@ -260,4 +281,48 @@ label:hover span {
   filter: grayscale(100%);
 }
 
-/* modal styles */
+/* description styles */
+.img-des-wrapper {
+  position: relative;
+  width: 15%;
+  min-width: 15%;
+  height: 40%;
+  z-index: 10;
+  left: 23%;
+  top: 30%;
+  margin: 0.3rem;
+  margin: auto;
+  overflow: hidden;
+  overflow-y: scroll;
+  border-radius: 0.4rem;
+  min-width: 180px;
+  transform: translate(-10%, 48%);
+  -webkit-backdrop-filter: blur(100px);
+  backdrop-filter: blur(100px);
+}
+.img-des-wrapper p {
+  position: absolute;
+  width: 95%;
+  height: 95%;
+  top: 50%;
+  left: 50%;
+  color: var(--white);
+  opacity: 0.8;
+  margin-top: auto;
+  transform: translate(-50%, -50%);
+}
+.img-des-wrapper .descriptive-img {
+  all: unset;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-filter: blur(5px);
+  filter: blur(5px);
+  border-radius: 0.4rem;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
