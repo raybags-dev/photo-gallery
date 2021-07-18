@@ -1,22 +1,25 @@
-import React, { useState } from "react";
-import ImageGrid from "./comps/ImageGrid";
-import Title from "./comps/Title";
-import UploadForm from "./comps/UploadForm";
-import Model from "./comps/Model";
+import React from "react";
+import "./App.css";
 
-function App() {
-  const [selectedImg, setSelectedImg] = useState(null);
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import { AuthProvider } from "./firebase/Auth";
+
+const App = () => {
   return (
-    <div className="App">
-      <Title />
-      <UploadForm />
-      <ImageGrid setSelectedImg={setSelectedImg} />
-      {selectedImg && (
-        <Model selectedImg={selectedImg} setSelectedImg={setSelectedImg} />
-      )}
-    </div>
+    <AuthProvider>
+      <Router>
+        <div>
+          <Route exact path="/" to="/login" component={Signup} />
+          <Route exact path="/home" to="/home" component={Home} />
+          <Route exact path="/login" to="/login" component={Login} />
+        </div>
+      </Router>
+    </AuthProvider>
   );
-}
+};
 
 export default App;

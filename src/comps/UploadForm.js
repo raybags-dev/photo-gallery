@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useRef } from "react";
 
 import ProgressBar from "./ProgressBar";
+import { motion } from "framer-motion";
 
 const UploadForm = () => {
   // click input handler
@@ -35,16 +36,30 @@ const UploadForm = () => {
   };
 
   return (
-    <form>
-      <label>
-        <input type="file" ref={inputRef} onChange={changeHandler} />
+    <form className="select-img-form">
+      <label className="label">
+        <input
+          className="select-image-input"
+          type="file"
+          ref={inputRef}
+          onChange={changeHandler}
+        />
 
         <span onClick={handleInputClick}>+</span>
       </label>
       {/* output div */}
       <div className="output">
         {/* render error  */}
-        {error && <p className="error">{error}</p>}
+        {error && (
+          <motion.p
+            className="error"
+            initial={{ opacity:0}}
+            animate={{ opacity: 1}}
+            transition={{ delay: 0.6 }}
+          >
+            {error}
+          </motion.p>
+        )}
         {/* render image */}
         {file && (
           <div className="image" download>
