@@ -8,7 +8,7 @@ import Title from "../comps/Title";
 import UploadForm from "../comps/UploadForm";
 import Model from "../comps/Model";
 
-const Home = ({ history }) => {
+const Home = ({history}) => {
   const [selectedImg, setSelectedImg] = useState(null);
 
   const handleSignOut = () => {

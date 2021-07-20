@@ -38,8 +38,11 @@ body {
   -ms-user-select: none;
   user-select: none;
   scroll-behavior: smooth;
-  background: linear-gradient(rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 50%),
-    url("https://github.com/raybags-web-dev/image_base/blob/master/images/faniture4.jpeg?raw=true")
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.1)
+    ),
+    url("https://github.com/raybags-web-dev/image_base/blob/master/images/f2.jpeg?raw=true")
       center/cover no-repeat fixed;
 }
 
@@ -65,7 +68,8 @@ body {
 .title h1 {
   position: -webkit-sticky;
   position: sticky;
-  color: var(--white);
+  color: var(--black);
+  opacity: 0.7;
   font-size: 1.2rem;
   letter-spacing: 2px;
   font-weight: normal;
@@ -89,19 +93,26 @@ body {
   box-shadow: var(--deep-shadow);
   background: var(--red);
 }
+
+@media screen and (max-width: 550px) {
+  .title h1 {
+    display: none;
+  }
+}
 .title h2,
 .title p {
   text-align: center;
-  color: var(--white);
+  color: var(--black);
 }
 .title h2 {
   position: relative;
-  font-size: 2.6rem;
+  font-size: 2.5rem;
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   margin: auto;
-  color: var(--white);
+  color: var(--black);
+  opacity: 0.8;
   margin-top: 60px;
 }
 .title h2::before {
@@ -109,10 +120,11 @@ body {
   position: absolute;
   left: 0;
   right: 0;
-  width: 100%;
+  width: 50%;
   height: 5%;
   bottom: 0%;
   opacity: 0.4;
+  transform: translate(50%);
   background: var(--red);
 }
 
@@ -155,7 +167,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--white);
+  color: var(--green);
   font-weight: 700;
   text-align: center;
   width: 100%;
@@ -184,7 +196,7 @@ body {
   position: absolute;
   left: 50%;
   padding: 0.2rem;
-  border-radius: 4rem;
+  border-radius: 1rem;
   transform: translate(-50%);
   color: var(--red);
   font-weight: 700;
@@ -261,6 +273,7 @@ body {
   backdrop-filter: blur(100px);
   background: rgb(32, 32, 32);
   opacity: 0.8;
+  z-index: 999;
 }
 .backdrop img {
   position: absolute;
@@ -341,7 +354,6 @@ body {
 }
 
 /* log in page styles */
-
 .login-container {
   position: fixed;
   min-width: 100%;
@@ -359,16 +371,20 @@ body {
       rgba(255, 255, 255, 0.5) 0%,
       rgba(255, 255, 255, 0.5) 50%
     ),
-    url("https://github.com/raybags-web-dev/image_base/blob/master/images/f2.jpeg?raw=true")
+    url("https://github.com/raybags-web-dev/image_base/blob/master/images/faniture4.jpeg?raw=true")
       center/cover no-repeat fixed;
 }
 .login-wrapper {
+  position: absolute;
   background-color: hsla(0, 0%, 0%, 0.4);
   padding: 50px 30px;
   width: 50%;
   min-width: 330px;
   max-width: 600px;
   border-radius: 0.5rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) !important;
   box-shadow: var(--deep-shadow);
 }
 .login-title {
@@ -427,6 +443,16 @@ body {
   border: 1px solid hsla(201, 100%, 50%);
   transition: var(--standard-transition);
 }
+.input-group input::placeholder {
+  transition: 0.5s;
+  text-align: center;
+}
+.input-group input:focus::placeholder {
+  letter-spacing: 5rem;
+  opacity: 0;
+  color: var(--white);
+  transition: 0.5s;
+}
 
 .login-button {
   padding: 10px 30px;
@@ -454,15 +480,16 @@ body {
   position: fixed;
   padding: 10px 30px;
   width: 200px;
-  bottom: 0%;
-  left: 0%;
+  bottom: 1%;
+  left: 1%;
   cursor: pointer;
   border-radius: 5px;
   background-color: hsla(204, 2%, 45%, 0.1);
   border: 1px solid rgb(167, 167, 167);
   outline: none;
   font-size: 1.3em;
-  color: var(--white);
+  color: var(--black);
+  font-style: italic;
   font-weight: lighter;
   box-shadow: var(--deep-shadow);
   margin-top: 20px;
@@ -474,4 +501,10 @@ body {
 .logout-btn:active {
   background-color: rgba(69, 69, 70, 0.5);
   transform: scale(0.98);
+}
+.login-error {
+  position: absolute;
+  color: red;
+  font-size: 1.5em;
+  font-style: italic;
 }

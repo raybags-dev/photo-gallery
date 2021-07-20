@@ -3,8 +3,9 @@ import { withRouter, Redirect } from "react-router";
 import { AuthContext } from "../firebase/Auth";
 
 import { projectAuth } from "../firebase/config";
+import { motion } from "framer-motion";
 
-const Login = ({ history }) => {
+const Login = ({ history, error }) => {
   const handleLogin = useCallback(
     async (event) => {
       event.preventDefault();
@@ -17,7 +18,7 @@ const Login = ({ history }) => {
           password.value
         );
 
-        history.push("/home");
+        history.push("/");
       } catch (ex) {
         alert(ex.message);
       }
@@ -28,12 +29,16 @@ const Login = ({ history }) => {
   const { currentUser } = useContext(AuthContext);
 
   if (currentUser) {
-    return <Redirect to="/home" />;
+    return <Redirect to="/login" />;
   }
 
   return (
     <div className="login-container">
-      <div className="login-wrapper">
+      <motion.div
+        className="login-wrapper"
+        initial={{ top: "-100%" }}
+        animate={{ top: "50%" }}
+      >
         <h1 className="login-title">Login</h1>
         <form className="login-form" onSubmit={handleLogin}>
           <div className="input-group">
@@ -58,8 +63,9 @@ const Login = ({ history }) => {
           <button type="submit" className="login-button">
             Sign In
           </button>
+          <p className="login-error">{error}</p>
         </form>
-      </div>
+      </motion.div>
     </div>
   );
 };
