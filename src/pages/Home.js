@@ -12,7 +12,7 @@ const Home = ({history}) => {
   const [selectedImg, setSelectedImg] = useState(null);
 
   const handleSignOut = () => {
-    history.push("/login");
+    history.push("/");
     projectAuth.signOut();
   };
 
