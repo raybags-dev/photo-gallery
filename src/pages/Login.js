@@ -18,7 +18,7 @@ const Login = ({ history, error }) => {
           password.value
         );
 
-        history.push("/home");
+        history.push("/");
       } catch (ex) {
         alert(ex.message);
       }

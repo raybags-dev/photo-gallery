@@ -12,8 +12,8 @@ const App = () => {
     <AuthProvider>
       <Router>
         <div>
-          <Route exact path="/" component={Login} />
-          <Route path="/" to="login" component={Home} />
+          <Route exact path="/login" component={Login} />
+          <Route path="/" component={Home} />
         </div>
       </Router>
     </AuthProvider>
