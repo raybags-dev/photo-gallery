@@ -5,15 +5,15 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import { AuthProvider } from "./firebase/Auth";
+import { AuthProvider, AuthenticatedRoute, UnauthenticatedRoute } from "./firebase/Auth";
 
 const App = () => {
   return (
     <AuthProvider>
       <Router>
         <div>
-          <Route exact path="/login" component={Login} />
-          <Route path="/" component={Home} />
+          <UnauthenticatedRoute exact path="/login" component={Login} />
+          <AuthenticatedRoute path="/" component={Home} />
         </div>
       </Router>
     </AuthProvider>
